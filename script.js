@@ -39,3 +39,25 @@ function getComputerChoice(){
 
 console.log(getComputerChoice());
 
+// Generate user's choice
+
+function getHumanChoice(){
+    //humanInput ask user to enter prompt (string);
+    const humanInput = prompt("rock, paper, scissors?: ")
+    // humanDesicion transforms humanInput to uppercase (toUpperCase()) to make
+    // everything equal
+    const humanDesicion = humanInput.toUpperCase();
+
+    if (humanDesicion === "ROCK"
+        |humanDesicion === "PAPER" 
+        |humanDesicion === "SCISSORS"){
+
+        return humanDesicion;
+    }
+    else{
+        return console.log("Invalid operation. Please try again");
+    }
+}
+
+console.log(getHumanChoice())
+
