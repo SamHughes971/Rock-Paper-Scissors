@@ -14,4 +14,28 @@
 // 6) IF THE COMPUTER WINS, DISPLAY MESSAGE 'COMPUTER WON. 
 // IF USER WINS, DISPLAY MESSAGE 'USER WON'
 
-console.log("Hello world");
+
+// Generate Computer's choice
+
+
+
+function getComputerChoice(){
+    let computerDesicion;
+    const computerRandomNumber = Math.floor(Math.random() * 3) + 1;
+
+    if (computerRandomNumber === 1){
+        computerDesicion = "Rock";
+    }
+
+    else if(computerRandomNumber === 2){
+        computerDesicion = "Paper";
+    }
+
+    else{
+        computerDesicion = "Scissors";
+    }
+
+    return computerDesicion;
+}
+
+console.log(getComputerChoice());
