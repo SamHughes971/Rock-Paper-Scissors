@@ -17,12 +17,11 @@
 
 // Generate Computer's choice
 
-
-
 function getComputerChoice(){
     let computerDesicion;
+    //Generate random number between 1 and 3
     const computerRandomNumber = Math.floor(Math.random() * 3) + 1;
-
+    //Assign desicion based on random number generated
     if (computerRandomNumber === 1){
         computerDesicion = "Rock";
     }
@@ -39,3 +38,4 @@ function getComputerChoice(){
 }
 
 console.log(getComputerChoice());
+
