@@ -23,15 +23,15 @@ function getComputerChoice(){
     const computerRandomNumber = Math.floor(Math.random() * 3) + 1;
     //Assign desicion based on random number generated
     if (computerRandomNumber === 1){
-        computerDesicion = "Rock";
+        computerDesicion = "ROCK";
     }
 
     else if(computerRandomNumber === 2){
-        computerDesicion = "Paper";
+        computerDesicion = "PAPER";
     }
 
     else{
-        computerDesicion = "Scissors";
+        computerDesicion = "SCISSORS";
     }
 
     return computerDesicion;
@@ -60,4 +60,8 @@ function getHumanChoice(){
 }
 
 console.log(getHumanChoice())
+
+
+
+
 
