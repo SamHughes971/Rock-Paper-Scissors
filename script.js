@@ -83,7 +83,3 @@ if(humanSelection === computerSelection){
             console.log(`The user chose ${humanSelection}. \nComputer chose ${computerSelection}. \nYou lose!`);
             computerScore ++;}
 
-
-
-
-
