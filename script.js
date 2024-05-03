@@ -37,8 +37,6 @@ function getComputerChoice(){
     return computerDesicion;
 }
 
-console.log(getComputerChoice());
-
 // Generate user's choice
 
 function getHumanChoice(){
@@ -59,7 +57,31 @@ function getHumanChoice(){
     }
 }
 
-console.log(getHumanChoice())
+// Declare score variables
+
+let humanScore = 0;
+let computerScore = 0;
+
+//Retrieve players decision from function 
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+// Create logic to play one game of rock, paper scissors
+
+if(humanSelection === computerSelection){
+    console.log(`The user chose ${humanSelection}.\nComputer chose ${computerSelection}. \nIts a tie!`);
+    
+} else if(humanSelection == "ROCK" && computerSelection == "SCISSORS"
+        || humanSelection == "PAPER" && computerSelection == "ROCK"
+        || humanSelection == "SCISSORS" && computerSelection == "PAPER")
+        {
+            console.log(`The user chose ${humanSelection}. \nComputer chose ${computerSelection}. \nYOU WON!`);
+            humanScore ++;}
+
+        else{
+            console.log(`The user chose ${humanSelection}. \nComputer chose ${computerSelection}. \nYou lose!`);
+            computerScore ++;}
 
 
 
