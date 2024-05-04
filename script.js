@@ -64,12 +64,8 @@ let computerScore = 0;
 
 //Create playRound function
 
-function playRound(){
-    //Retrieve players decision from function 
-
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
-
+function playRound(humanSelection, computerSelection){
+    
     if(humanSelection === computerSelection){
         console.log(`The user chose ${humanSelection}.\nComputer chose ${computerSelection}. \nIts a tie!`);
         
@@ -86,11 +82,14 @@ function playRound(){
     return humanScore, computerScore;
 
 }
-
+//Play rock paper scissors 'numOfRounds' times
 function playGame(numOfRounds){
     for(let i = 0; i < numOfRounds; i++){
+        //Retrieve players decision from function 
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
 
-        playRound();
+        playRound(humanSelection, computerSelection);
         console.log(`User score: ${humanScore}\nComputer score: ${computerScore}`);
     }
 }
