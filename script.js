@@ -62,14 +62,14 @@ function getHumanChoice(){
 let humanScore = 0;
 let computerScore = 0;
 
-//Retrieve players decision from function 
-
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
 //Create playRound function
 
-function playRound(humanSelection, computerSelection){
+function playRound(){
+    //Retrieve players decision from function 
+
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+
     if(humanSelection === computerSelection){
         console.log(`The user chose ${humanSelection}.\nComputer chose ${computerSelection}. \nIts a tie!`);
         
@@ -90,9 +90,8 @@ function playRound(humanSelection, computerSelection){
 function playGame(numOfRounds){
     for(let i = 0; i < numOfRounds; i++){
 
-        playRound(humanSelection, computerSelection );
+        playRound();
         console.log(`User score: ${humanScore}\nComputer score: ${computerScore}`);
-        
     }
 }
 
