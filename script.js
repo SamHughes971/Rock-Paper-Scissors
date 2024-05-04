@@ -87,6 +87,13 @@ function playRound(humanSelection, computerSelection){
 
 }
 
-playRound(humanSelection, computerSelection);
+function playGame(numOfRounds){
+    for(let i = 0; i < numOfRounds; i++){
 
-console.log(`User score: ${humanScore}\nComputer score: ${computerScore}`);
+        playRound(humanSelection, computerSelection );
+        console.log(`User score: ${humanScore}\nComputer score: ${computerScore}`);
+        
+    }
+}
+
+playGame(5)
