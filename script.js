@@ -67,19 +67,26 @@ let computerScore = 0;
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 
-// Create logic to play one game of rock, paper scissors
+//Create playRound function
 
-if(humanSelection === computerSelection){
-    console.log(`The user chose ${humanSelection}.\nComputer chose ${computerSelection}. \nIts a tie!`);
+function playRound(humanSelection, computerSelection){
+    if(humanSelection === computerSelection){
+        console.log(`The user chose ${humanSelection}.\nComputer chose ${computerSelection}. \nIts a tie!`);
+        
+    } else if(humanSelection == "ROCK" && computerSelection == "SCISSORS"
+            || humanSelection == "PAPER" && computerSelection == "ROCK"
+            || humanSelection == "SCISSORS" && computerSelection == "PAPER")
+            {
+                console.log(`The user chose ${humanSelection}. \nComputer chose ${computerSelection}. \nYOU WON!`);
+                humanScore ++;}
     
-} else if(humanSelection == "ROCK" && computerSelection == "SCISSORS"
-        || humanSelection == "PAPER" && computerSelection == "ROCK"
-        || humanSelection == "SCISSORS" && computerSelection == "PAPER")
-        {
-            console.log(`The user chose ${humanSelection}. \nComputer chose ${computerSelection}. \nYOU WON!`);
-            humanScore ++;}
+            else{
+                console.log(`The user chose ${humanSelection}. \nComputer chose ${computerSelection}. \nYou lose!`);
+                computerScore ++;}
+    return humanScore, computerScore;
 
-        else{
-            console.log(`The user chose ${humanSelection}. \nComputer chose ${computerSelection}. \nYou lose!`);
-            computerScore ++;}
+}
 
+playRound(humanSelection, computerSelection);
+
+console.log(`User score: ${humanScore}\nComputer score: ${computerScore}`);
