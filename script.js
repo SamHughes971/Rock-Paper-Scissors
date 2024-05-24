@@ -32,6 +32,10 @@ let computerSelection = getComputerChoice();
 
 
 buttonContainer.addEventListener('click', (e) => {
+
+    const resultContainer = document.createElement('div');
+    const resultText = document.createElement('p');
+
     let resultRound = ' ';
     let target = e.target;
 
@@ -40,8 +44,10 @@ buttonContainer.addEventListener('click', (e) => {
         case 'paper':  resultRound = playRound("PAPER", computerSelection);break;
         case 'scissors':  resultRound = playRound("SCISSORS", computerSelection);break;
     }
-    console.log(resultRound)
-    
+    resultText.textContent = resultRound;
+    resultRound = '';
+    resultContainer.appendChild(resultText);
+    buttonContainer.appendChild(resultContainer);
 });
 
 
