@@ -1,10 +1,12 @@
-
+const buttonContainer = document.querySelector('#container');
 const userRock = document.querySelector('#rock');
 const userPaper = document.querySelector('#paper');
 const userScissors = document.querySelector('#scissors')
 
 let humanScore = 0;
 let computerScore = 0;
+
+let humanSelect  = 0;
 
 // Generate Computer's choice
 
@@ -29,15 +31,24 @@ function getComputerChoice(){
 }
 
 let computerSelection = getComputerChoice();
-userRock.addEventListener('click', () => {
-    playRound("ROCK", computerSelection)
+
+
+buttonContainer.addEventListener('click', (e) => {
+    let target = e.target;
+
+    switch(target.id){
+        case 'rock':
+            playRound("ROCK", computerSelection)
+            break;
+        case 'paper':
+            playRound("PAPER", computerSelection)
+            break;
+        case 'scissors':
+            playRound("SCISSORS", computerSelection)
+            break;
+    }
 });
-userPaper.addEventListener('click', () => {
-    playRound("PAPER", computerSelection)
-});
-userScissors.addEventListener('click', () => {
-    playRound("SCISSORS", computerSelection)
-});
+
 
     
 function playRound(humanSelection, computerSelection){
