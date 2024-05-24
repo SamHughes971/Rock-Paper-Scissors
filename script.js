@@ -6,8 +6,6 @@ const userScissors = document.querySelector('#scissors')
 let humanScore = 0;
 let computerScore = 0;
 
-let humanSelect  = 0;
-
 // Generate Computer's choice
 
 function getComputerChoice(){
@@ -34,39 +32,36 @@ let computerSelection = getComputerChoice();
 
 
 buttonContainer.addEventListener('click', (e) => {
+    let resultRound = ' ';
     let target = e.target;
 
     switch(target.id){
-        case 'rock':
-            playRound("ROCK", computerSelection)
-            break;
-        case 'paper':
-            playRound("PAPER", computerSelection)
-            break;
-        case 'scissors':
-            playRound("SCISSORS", computerSelection)
-            break;
+        case 'rock':  resultRound = playRound("ROCK", computerSelection); break;
+        case 'paper':  resultRound = playRound("PAPER", computerSelection);break;
+        case 'scissors':  resultRound = playRound("SCISSORS", computerSelection);break;
     }
+    console.log(resultRound)
+    
 });
 
 
     
 function playRound(humanSelection, computerSelection){
-    
+    let playRoundText = ' ';    
+
     if(humanSelection === computerSelection){
-        console.log(`The user chose ${humanSelection}.\nComputer chose ${computerSelection}. \nIts a tie!`);
+        playRoundText = `The user chose ${humanSelection}.\nComputer chose ${computerSelection}. \nIts a tie!`;
         
     } else if(humanSelection == "ROCK" && computerSelection == "SCISSORS"
             || humanSelection == "PAPER" && computerSelection == "ROCK"
             || humanSelection == "SCISSORS" && computerSelection == "PAPER")
             {
-                console.log(`The user chose ${humanSelection}. \nComputer chose ${computerSelection}. \nYOU WON!`);
-                humanScore ++;}
+                playRoundText = `The user chose ${humanSelection}. \nComputer chose ${computerSelection}. \nYOU WON!`}
     
             else{
-                console.log(`The user chose ${humanSelection}. \nComputer chose ${computerSelection}. \nYou lose!`);
-                computerScore ++;}
-    return humanScore, computerScore;
+                playRoundText = `The user chose ${humanSelection}. \nComputer chose ${computerSelection}. \nYou lose!`};
+
+    return playRoundText;
 
 }
 
