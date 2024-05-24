@@ -1,3 +1,11 @@
+
+const userRock = document.querySelector('#rock');
+const userPaper = document.querySelector('#paper');
+const userScissors = document.querySelector('#scissors')
+
+let humanScore = 0;
+let computerScore = 0;
+
 // Generate Computer's choice
 
 function getComputerChoice(){
@@ -20,27 +28,18 @@ function getComputerChoice(){
     return computerDesicion;
 }
 
-// Generate user's choice
+let computerSelection = getComputerChoice();
+userRock.addEventListener('click', () => {
+    playRound("ROCK", computerSelection)
+});
+userPaper.addEventListener('click', () => {
+    playRound("PAPER", computerSelection)
+});
+userScissors.addEventListener('click', () => {
+    playRound("SCISSORS", computerSelection)
+});
 
-function getHumanChoice(){
-    const humanInput = prompt("rock, paper, scissors?: ")
-    // humanDesicion transforms humanInput to uppercase (toUpperCase()) to make
-    // everything equal
-    const humanDesicion = humanInput.toUpperCase();
-
-    if (humanDesicion === "ROCK"
-        |humanDesicion === "PAPER" 
-        |humanDesicion === "SCISSORS"){
-
-        return humanDesicion;
-    }
-    else{
-        return console.log("Invalid operation. Please try again");
-    }
-}
-let humanScore = 0;
-let computerScore = 0;
-
+    
 function playRound(humanSelection, computerSelection){
     
     if(humanSelection === computerSelection){
@@ -59,16 +58,27 @@ function playRound(humanSelection, computerSelection){
     return humanScore, computerScore;
 
 }
-//Play rock paper scissors 'numOfRounds' times
-function playGame(numOfRounds){
-    for(let i = 0; i < numOfRounds; i++){
-        //Retrieve players decision from function 
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
 
-        playRound(humanSelection, computerSelection);
-        console.log(`User score: ${humanScore}\nComputer score: ${computerScore}`);
-    }
-}
 
-playGame(5)
+
+
+
+
+
+
+
+
+
+// //Play rock paper scissors 'numOfRounds' times
+// function playGame(numOfRounds){
+//     for(let i = 0; i < numOfRounds; i++){
+//         //Retrieve players decision from function 
+//         const humanSelection = getHumanChoice();
+//         const computerSelection = getComputerChoice();
+
+//         playRound(humanSelection, computerSelection);
+//         console.log(`User score: ${humanScore}\nComputer score: ${computerScore}`);
+//     }
+// }
+
+// playGame(5)
