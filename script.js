@@ -1,10 +1,11 @@
 const buttonContainer = document.querySelector('#container');
-const userRock = document.querySelector('#rock');
-const userPaper = document.querySelector('#paper');
-const userScissors = document.querySelector('#scissors')
 
-let humanScore = 0;
-let computerScore = 0;
+const resultContainer = document.createElement('div');
+const resultText = document.createElement('p');
+let humanScoreTotal = document.createElement('p');
+let computerScoreTotal = document.createElement('p');
+
+
 // Generate Computer's choice
 
 function getComputerChoice(){
@@ -28,17 +29,14 @@ function getComputerChoice(){
 }
 
 let computerSelection = getComputerChoice();
-
+let humanScore = 0;
+let computerScore = 0;
 
 buttonContainer.addEventListener('click', (e) => {
 
-    const resultContainer = document.createElement('div');
-    const resultText = document.createElement('p');
-    let humanScoreTotal = document.createElement('p');
-    let computerScoreTotal = document.createElement('p');
-
-    let resultRound = ' ';
+    
     let target = e.target;
+    let resultRound = ' ';
 
     switch(target.id){
         case 'rock':  resultRound = playRound("ROCK", computerSelection); break;
@@ -48,12 +46,18 @@ buttonContainer.addEventListener('click', (e) => {
     resultText.textContent = resultRound.playRoundText;
     humanScoreTotal.textContent = `User score: ` + resultRound.humanScore;
     computerScoreTotal.textContent = `Computer score: ` + resultRound.computerScore;    
-
+    
     resultRound = '';
     resultContainer.appendChild(resultText);
     resultContainer.appendChild(humanScoreTotal);
     resultContainer.appendChild(computerScoreTotal);
     buttonContainer.appendChild(resultContainer);
+    
+
+    console.log(humanScore)
+    console.log(typeof(humanScore))
+    
+
 });
     
 function playRound(humanSelection, computerSelection){
@@ -73,27 +77,3 @@ function playRound(humanSelection, computerSelection){
     return {playRoundText, humanScore, computerScore};
 
 }
-
-
-
-
-
-
-
-
-
-
-
-// //Play rock paper scissors 'numOfRounds' times
-// function playGame(numOfRounds){
-//     for(let i = 0; i < numOfRounds; i++){
-//         //Retrieve players decision from function 
-//         const humanSelection = getHumanChoice();
-//         const computerSelection = getComputerChoice();
-
-//         playRound(humanSelection, computerSelection);
-//         console.log(`User score: ${humanScore}\nComputer score: ${computerScore}`);
-//     }
-// }
-
-// playGame(5)
