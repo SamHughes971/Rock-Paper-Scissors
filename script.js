@@ -4,6 +4,7 @@ const resultContainer = document.createElement('div');
 const resultText = document.createElement('p');
 let humanScoreTotal = document.createElement('p');
 let computerScoreTotal = document.createElement('p');
+let gameEndText = document.createElement('p');
 
 
 // Generate Computer's choice
@@ -28,36 +29,39 @@ function getComputerChoice(){
     return computerDesicion;
 }
 
-let computerSelection = getComputerChoice();
+
 let humanScore = 0;
 let computerScore = 0;
 
 buttonContainer.addEventListener('click', (e) => {
 
+    if(humanScore < 5 && computerScore < 5){
+        let computerSelection = getComputerChoice();
+        let target = e.target;
+        let resultRound = ' ';
     
-    let target = e.target;
-    let resultRound = ' ';
+        switch(target.id){
+            case 'rock':  resultRound = playRound("ROCK", computerSelection); break;
+            case 'paper':  resultRound = playRound("PAPER", computerSelection);break;
+            case 'scissors':  resultRound = playRound("SCISSORS", computerSelection);break;
+        }
+        resultText.textContent = resultRound.playRoundText;
+        humanScoreTotal.textContent = `User score: ` + resultRound.humanScore;
+        computerScoreTotal.textContent = `Computer score: ` + resultRound.computerScore;    
+        
+        resultRound = '';
+        resultContainer.appendChild(resultText);
+        resultContainer.appendChild(humanScoreTotal);
+        resultContainer.appendChild(computerScoreTotal);
+        buttonContainer.appendChild(resultContainer);
 
-    switch(target.id){
-        case 'rock':  resultRound = playRound("ROCK", computerSelection); break;
-        case 'paper':  resultRound = playRound("PAPER", computerSelection);break;
-        case 'scissors':  resultRound = playRound("SCISSORS", computerSelection);break;
-    }
-    resultText.textContent = resultRound.playRoundText;
-    humanScoreTotal.textContent = `User score: ` + resultRound.humanScore;
-    computerScoreTotal.textContent = `Computer score: ` + resultRound.computerScore;    
-    
-    resultRound = '';
-    resultContainer.appendChild(resultText);
-    resultContainer.appendChild(humanScoreTotal);
-    resultContainer.appendChild(computerScoreTotal);
-    buttonContainer.appendChild(resultContainer);
-    
+    } else{
+        gameEndText.textContent = `Game Over! Final result: User score - ${humanScore}
+                                Computer score - ${computerScore}`
 
-    console.log(humanScore)
-    console.log(typeof(humanScore))
-    
-
+        resultContainer.appendChild(gameEndText);
+        buttonContainer.appendChild(resultContainer);
+    } 
 });
     
 function playRound(humanSelection, computerSelection){
@@ -72,7 +76,7 @@ function playRound(humanSelection, computerSelection){
             {   
                 humanScore++ , playRoundText = `The user chose ${humanSelection}. \nComputer chose ${computerSelection}. \nYOU WON!`}
             else{
-                computerScore ++, playRoundText = `The user chose ${humanSelection}. \nComputer chose ${computerSelection}. \nYou lose!`};
+                computerScore++, playRoundText = `The user chose ${humanSelection}. \nComputer chose ${computerSelection}. \nYou lose!`};
 
     return {playRoundText, humanScore, computerScore};
 
